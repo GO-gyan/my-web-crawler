@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
+import AppBar from 'material-ui/AppBar';
+import AppTextInput from './AppTextInput';
 
 class Home extends Component {
 	render() {
 		return(
-			<h1>Hiiii</h1>
+			<div>
+				<AppBar
+    				title="Web Crawler"
+    				iconClassNameRight="muidocs-icon-navigation-expand-more"
+  				/>
+  				<AppTextInput/>
+  			</div>
 			)
 	}
 }
