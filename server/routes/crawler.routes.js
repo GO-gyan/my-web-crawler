@@ -1,8 +1,11 @@
 var express = require('express');
 var crawler = express.Router();
+var crawling = require('../crawler/linkCrawler.js');
 
 crawler.post('/crawl', function(req, res) {
 	let link = req.body.link;
-	res.status(200).json({plainText: 'plain text', xmlText: 'xml text', error: false});
+	crawling.getCrawlledLink(link, (data) => {
+		res.status(200).json({data});
+	});
 })
 module.exports=crawler;

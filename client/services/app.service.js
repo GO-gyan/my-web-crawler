@@ -3,7 +3,6 @@ import request from 'superagent';
 export default {
 	crawl(website, cb) {
 		crawlWebsite(website, (data) => {
-			console.log(data);
       cb(data);
 		});
 	}
@@ -17,14 +16,16 @@ function crawlWebsite (website, callback) {
     .send(body)
     .end((err, res) => {
       let result = JSON.parse(res.text)
-      if (!result.error) {
+      let data = result.data;
+      if (!data.error) {
         callback({
-          plainText: result.plainText,
-          xmlText: result.xmlText
+          text: data.data,
+          error: false
         })
       } else {
         callback({
-          errMessage: result.message
+          text: data.data,
+          error: true
         })
       }
   })

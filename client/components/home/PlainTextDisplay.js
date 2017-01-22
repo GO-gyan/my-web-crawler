@@ -17,12 +17,13 @@ class PlainTextDisplay extends Component {
 		super(props);
 	}
 	render() {
-		const text = this.props.plainText;
+		const textItem = this.props.plainText.map((text, index) =>
+				<ListItem key={index}>{text}</ListItem>
+			);
 		return(
 				<Paper style={paperStyle} zDepth={1}>
 					<List>
-						<ListItem>{text}</ListItem>
-						<ListItem>{text}</ListItem>
+						{textItem}
 					</List>
 				</Paper>
 			)
